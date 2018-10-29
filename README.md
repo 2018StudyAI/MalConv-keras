@@ -32,5 +32,11 @@ python src/train.py -c [훈련 데이터셋 csv파일]
 python src/predict.py -c [테스트 데이터셋 csv파일]
 ```
 
+## 검증
+```
+cd saved
+python getaccuary.cy -c [predict.py 실행으로 생성된 csv파일]
+```
+
 ## 소스원본
 https://github.com/j40903272/MalConv-keras

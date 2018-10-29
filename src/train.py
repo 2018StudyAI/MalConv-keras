@@ -24,7 +24,7 @@ parser.add_argument('--save_path', type=str, default='../saved/', help='Director
 parser.add_argument('--model_path', type=str, default='../saved/malconv.h5', help="model to resume")
 parser.add_argument('--save_best', action='store_true', help="Save model with best validation accuracy")
 parser.add_argument('--resume', action='store_true')
-parser.add_argument('csv', type=str)
+parser.add_argument('-c','--csv', type=str)
 
 
 

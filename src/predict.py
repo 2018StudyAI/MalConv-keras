@@ -12,7 +12,7 @@ parser.add_argument('--verbose', type=int, default=1)
 parser.add_argument('--limit', type=float, default=0.)
 parser.add_argument('--model_path', type=str, default='../saved/malconv.h5')
 parser.add_argument('--result_path', type=str, default='../saved/result.csv')
-parser.add_argument('csv', type=str)
+parser.add_argument('-c', '--csv', required=True,  type=str, help="input Test csv file")
 
 def predict(model, fn_list, label, batch_size=64, verbose=1):
     

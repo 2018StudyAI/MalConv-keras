@@ -12,12 +12,15 @@ Enjoy !
 
 ## Requirement
 - python3 (3.5.2)
-- numpy (1.13.1)
-- pandas (0.22.0)
-- pickle (0.7.4)
-- keras (2.1.5)
-- tensorflow (1.6.0)
-- sklearn
+if you have not gpu:
+```
+pip install -r requirments_cpu.txt
+```
+
+if you have gpu
+```
+pip install -r requirements_gpu.txt
+```
 
 ## Get started
 #### Clone the repository
@@ -47,64 +50,4 @@ If you require the preprocessed data, run the following
 ```
 python3 preprocess.py example.csv
 python3 preprocess.py example.csv --save_path saved/preprocess_data.pkl
-```
-#### Adversarial
-Try different --step_size, it's quite sensitive
-```
-python3 gen_adversarial.py example.csv
-python3 gen_adversarial.py example.csv --save_path saved/adversarial_samples --pad_percent 0.1
-
-### for multiple class classification
-python3 gen_adversarial2.py example.csv --class 1
-```
-The process log format would be **<filename**, **original score, file length, pad length, loss, predict score>**
-as in [adversarial_log.csv](https://github.com/j40903272/MalConv-keras/blob/master/saved/adversarial_log.csv)
-
-**< Notice >**
-The generated padding bytes sometimes cannot be corrected encoded, a workaround is as follow :
-```
-# Read bytes then tokenize
-byte_content = open('target', 'rb').read()
-content = [chr(i) for i in byte_content]
-```
-
-#### Parameters
-Find out more options with `-h`
-```
-python3 train.py -h
-
-  -h, --help
-  --batch_size BATCH_SIZE
-  --verbose VERBOSE
-  --epochs EPOCHS
-  --limit LIMIT
-  --max_len MAX_LEN
-  --win_size WIN_SIZE
-  --val_size VAL_SIZE
-  --save_path SAVE_PATH
-  --save_best
-  --resume
-  
-python3 predict.py -h
-python3 preprocess.py -h
-```
-#### Logs and checkpoint
-The default path for output files would all be in [saved/](https://github.com/j40903272/MalConv-keras/tree/master/saved)
-
-## Example
-```
-from malconv import Malconv
-from preprocess import preprocess
-import utils
-
-model = Malconv()
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
-
-df = pd.read_csv(input.csv, header=None)
-filenames, label = df[0].values, df[1].values
-data = preprocess(filenames)
-x_train, x_test, y_train, y_test = utils.train_test_split(data, label)
-
-history = model.fit(x_train, y_train)
-pred = model.predict(x_test)
 ```

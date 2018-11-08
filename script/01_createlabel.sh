@@ -1,6 +1,6 @@
 #!/bin/sh
 
 #train set
-python ../utils/create_traindataset.py --prefix /home/abc/train -c ~/label/sample.csv -o ~/sample.csv 
+python ../utils/create_traindataset.py --prefix ~/Downloads/trainset -c ~/Downloads/label/trainset.csv -o ~/train.csv 
 #test set
-python ../utils/create_traindataset.py --prefix /home/abc/test -c ~/label/sample.csv -o ~/test.csv 
+python ../utils/create_traindataset.py --prefix ~/Downloads/testset -c ~/Downloads/label/testset.csv -o ~/test.csv

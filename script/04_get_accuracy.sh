@@ -1,2 +1,2 @@
 #!/bin/sh
-../utils/get_accuarcy.py -c ~/test.csv
+python ../utils/get_accuarcy.py -c ~/Downloads/output/result.csv 

@@ -1,2 +1,2 @@
 #!/bin/sh
-python ../src/train.py -c ~/sample.csv --save_path ../saved/abc
+python ../src/train.py --epochs 10 -c ~/train.csv --save_path ~/Downloads/output

@@ -5,7 +5,7 @@ import warnings
 import pandas as pd
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.models import load_model
-
+import os
 import utils
 from malconv import Malconv
 from preprocess import preprocess
@@ -23,10 +23,8 @@ parser.add_argument('--val_size', type=float, default=0.1, help="validation perc
 parser.add_argument('--save_path', type=str, default='../saved/', help='Directory to save model and log')
 parser.add_argument('--model_path', type=str, default='../saved/malconv.h5', help="model to resume")
 parser.add_argument('--save_best', action='store_true', help="Save model with best validation accuracy")
-parser.add_argument('--resume', action='store_true')
-parser.add_argument('-c','--csv', type=str)
-
-
+#parser.add_argument('--resume', action='store_true')
+parser.add_argument('-c','--csv', type=str, required=True, help='csv file including train files')
 
 def train(model, max_len=200000, batch_size=64, verbose=True, epochs=100, save_path='../saved/', save_best=True):
     
@@ -51,18 +49,24 @@ def train(model, max_len=200000, batch_size=64, verbose=True, epochs=100, save_p
 if __name__ == '__main__':
     args = parser.parse_args()
     
+    if not os.path.exists(args.save_path):
+        os.mkdir(args.save_path)
+
     # limit gpu memory
     if args.limit > 0:
         utils.limit_gpu_memory(args.limit)
     
     
     # prepare model
-    if args.resume:
-        model = load_model(args.model_path)
-    else:
-        model = Malconv(args.max_len, args.win_size)
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
+    #if args.resume:
+    #    model = load_model(args.model_path)
+    #else:
+    #    model = Malconv(args.max_len, args.win_size)
+    #    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
     
+    #create a malconv model 
+    model = Malconv(args.max_len, args.win_size)
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
     
     # prepare data
     # preprocess is handled in utils.data_generator

@@ -12,12 +12,16 @@ Enjoy !
 
 ## Requirement
 - python3 (3.5.2)
-- numpy (1.13.1)
-- pandas (0.22.0)
-- pickle (0.7.4)
-- keras (2.1.5)
-- tensorflow (1.6.0)
-- sklearn
+
+if you have not gpu:
+```
+pip install -r requirments_cpu.txt
+```
+
+if you have gpu
+```
+pip install -r requirements_gpu.txt
+```
 
 ## 요약
 지도기반 딥러닝 악성코드 탐지

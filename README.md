@@ -11,7 +11,8 @@ The adversarial samples are crafted by padding some bytes to the input file. It 
 Enjoy !
 
 ## Requirement
-- python3 (3.5.2)  
+- python3 (3.5.2)
+
 if you have not gpu:
 ```
 pip install -r requirments_cpu.txt

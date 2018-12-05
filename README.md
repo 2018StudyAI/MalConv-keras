@@ -22,7 +22,6 @@ if you have gpu
 ```
 pip install -r requirements_gpu.txt
 ```
-
 ## 요약
 지도기반 딥러닝 악성코드 탐지
 

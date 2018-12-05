@@ -27,8 +27,8 @@ def main():
     print(mt)
 
     #print FP, FN
-    print("False Postive : %.0f%%" % (round(mt[0][1]/(mt[0][1]+mt[1][1]), 2)*100))
-    print("False Negative : %.0f%%" % (round(mt[1][0]/(mt[0][0]+mt[1][0]), 2)*100))
+    print("True Postive : %.0f%%" % (round(mt[0][1]/(mt[0][1]+mt[1][1]), 2)*100))
+    print("False Postive : %.0f%%" % (round(mt[1][0]/(mt[0][0]+mt[1][0]), 2)*100))
 
 if __name__=='__main__':
     main()
